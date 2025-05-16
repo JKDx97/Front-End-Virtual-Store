@@ -1,0 +1,118 @@
+<div id="carouselExampleIndicators" class="carousel slide custom-carousel">
+    <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
+            aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+            aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+            aria-label="Slide 3"></button>
+    </div>
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img src="https://i3.wp.com/dlcdnwebimgs.asus.com/files/media/B54349DD-1E57-46B1-B1A7-10166BF72325/v1/img/gaming/bg-gaming.jpg?ssl=1"
+                class="d-block img-fluid" alt="...">
+        </div>
+        <div class="carousel-item">
+            <img src="https://cloudfront-us-east-1.images.arcpublishing.com/metroworldnews/TUI2JM72AREFFDWOM3RTCWY7G4.jpg"
+                class="d-block img-fluid" alt="...">
+        </div>
+        <div class="carousel-item">
+            <img src="https://cdn.mos.cms.futurecdn.net/vtMcS5VxtLtc42iWJFRzpa.jpg" class="d-block img-fluid" alt="...">
+        </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+        data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+        data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>
+
+<h3 class="fade-in">Eliga su marca de preferencia</h3>
+<div class="brand-logos  fade-in">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/HP_logo_2012.svg/800px-HP_logo_2012.svg.png"
+        alt="HP">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/Dell_logo_2016.svg/170px-Dell_logo_2016.svg.png"
+        alt="Dell">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Lenovo_%282015%29.svg/250px-Lenovo_%282015%29.svg.png"
+        alt="Lenovo">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/ASUS_Corporate_Logo.svg/2560px-ASUS_Corporate_Logo.svg.png"
+        alt="Asus">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg" alt="Apple">
+</div>
+
+<div class="d-flex">
+    <!-- Sidebar -->
+    <div class="col-md-3 sidebar">
+        <h4>Filtros</h4>
+
+        <!-- Filtro por marca -->
+        <h6>Marcas</h6>
+        <ul class="list-unstyled">
+            <li *ngFor="let brand of ['HP', 'Dell', 'Lenovo', 'Asus', 'Apple']">
+                <input type="checkbox" [id]="brand" [value]="brand" (change)="toggleBrand(brand)">
+                <label [for]="brand">{{ brand }}</label>
+            </li>
+        </ul>
+
+        <!-- Filtro por precio -->
+        <h6>Rango de precio</h6>
+        <label for="min-price">Mínimo:</label>
+        <input type="number" id="min-price" class="form-control" placeholder="S/ 1000"
+            (input)="updatePrice('min', $event)">
+
+        <label for="max-price">Máximo:</label>
+        <input type="number" id="max-price" class="form-control" placeholder="S/ 5000"
+            (input)="updatePrice('max', $event)">
+
+
+        <!-- Ordenar por precio y nombre -->
+        <h6>Ordenar por</h6>
+        <select class="form-select" [(ngModel)]="sortOption" (change)="sortLaptops()">
+            <option value="asc">Precio: Menor a mayor</option>
+            <option value="desc">Precio: Mayor a menor</option>
+            <option value="az">Marca: A - Z</option>
+            <option value="za">Marca: Z - A</option>
+        </select>
+    </div>
+
+
+    <!-- Contenido al costado del sidebar -->
+    <div class="productos-container">
+        <h3 class="titulo">Productos Destacados</h3>
+        <div class="row">
+            <div class="col-lg-4 col-md-6 col-sm-12 mb-4" *ngFor="let pc of filteredPcs">
+                <div class="card producto-card">
+                    <div class="imagen-container">
+                        <img *ngIf="pc.images?.length > 0 && pc.images[0]?.pc_image_url"
+                            [src]="pc.images[0]?.pc_image_url" alt="Imagen de {{ pc.marca }}"
+                            class="producto-img">
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">{{ pc.marca }} - {{ pc.nombre }}</h5>
+                        <p class="detalles">
+                            Procesador: {{ pc.procesador }} <br>
+                            RAM: {{ pc.ram }}GB | Almacenamiento: {{ pc.almacenamiento }}GB <br>
+                            GPU: {{ pc.gpu }}
+                        </p>
+                        <p class="vendedor">
+                            Por GamerVault
+                            <img src="https://media-hosting.imagekit.io//f88530b6fcea44d8/xd-removebg-preview.png?Expires=1837459128&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=S-P7LIljHGDR-5SjrgM7EB~QPTVHOb2BXwnrTCNSpGzI275SX7I8at13sNsIzZdDyNCpFDmN7fuzXOnxkXFs~BRLz6WiXt71-RuUD9SiRVJJ91q5F7s0TvU55tJ6fZckRFUAwvgdJZ2yb-3JL~AFnsq7d535fmCZRnLsMTtJcNaV8yiOuhRWo4VWGmwgQ~AL1sp7ixdBRwdwxqmss2QCpJ9CtAuPKstRGtWD1PTCnTpTRbP5QnUzhmgUrB3w-lU9jG7FhDfWFCE14rVKl-9e8Jfm4CM2z25qn0uFjnyFRYneCxL94NUPbjiE8PDgaJhCJkefLPSGW5SuH78WNd1EBA__"
+                                alt="Logo" class="logo-vendedor">
+                        </p>
+                        <p class="precio"><strong>S/ {{ pc.precio }}</strong></p>
+                        <div class="buttons">
+                            <a href="#" class="btn btn-primary btn-ver-mas">Ver más</a>
+                            <button class="btn btn-success" (click)="addPcCarrito(pc)">Agregar al
+                                carrito</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

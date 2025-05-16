@@ -1,0 +1,66 @@
+<div class="container">
+    <!-- Formulario -->
+    <form class="formulario" #formDatos="ngForm" (ngSubmit)="enviarDatos(formDatos)">
+      <h2>Datos del usuario</h2>
+  
+      <!-- Nombre y Apellido en 2 columnas -->
+      <div class="form-group">
+        <input type="text" id="nombre" name="nombre" placeholder="Nombres" ngModel required>
+      </div>
+      <div class="form-group">
+        <input type="text" id="apellido" name="apellido" placeholder="Apellidos" ngModel required>
+      </div>
+  
+      <!-- Departamento y Región en 2 columnas -->
+      <div class="form-group">
+        <select id="departamento" name="departamento" [(ngModel)]="selectedDepartamento" (change)="onDepartamentoChange(selectedDepartamento)" required>
+          <option value="" disabled selected>Seleccione un departamento</option>
+          <option *ngFor="let departamento of departamentos" [value]="departamento">
+            {{ departamento }}
+          </option>
+        </select>
+      </div>
+  
+      <div class="form-group" *ngIf="regiones.length > 0">
+        <select id="region" name="region" [(ngModel)]="selectedRegion" required>
+          <option value="" disabled selected>Seleccione una región</option>
+          <option *ngFor="let region of regiones" [value]="region">
+            {{ region }}
+          </option>
+        </select>
+      </div>
+      <div class="form-group">
+        <input type="text" id="distrito" placeholder="Distrito" name="distrito" ngModel required>
+      </div>
+      <div class="form-group">
+        <input type="text" id="dni" placeholder="DNI" name="dni" ngModel required pattern="[0-9]{8}">
+      </div>
+      <div class="form-group">
+        <input type="text" id="direccion" placeholder="Dirección" name="direccion" ngModel required>
+      </div>
+      <div class="form-group">
+        <input type="email" id="correo" placeholder="Correo Electrónico" name="correo" ngModel required>
+      </div>
+      <div class="form-group">
+        <input type="tel" id="numero" placeholder="Celular" name="telefono" ngModel required pattern="[0-9]{9}">
+      </div>
+  
+      <!-- Botón de envío -->
+      <button type="submit">Confirmar</button>
+      <button (click)="volver()">Atrás</button>
+
+    </form>
+  
+    <!-- Carrito -->
+    <div class="carrito">
+      <h2>Carrito de compras</h2>
+      <ul class="carrito-lista">
+        <li *ngFor="let item of carrito">
+          <img [src]="getProductImage(item)" alt="Imagen del producto">
+          {{ item.nombre ? item.nombre : item.modelo }} - Cantidad: {{ item.cantidad }} - <strong>Subtotal: S/ {{ item.precio * item.cantidad | number:'1.2-2' }}</strong>
+
+        </li>
+      </ul>
+    </div>
+  </div>
+  

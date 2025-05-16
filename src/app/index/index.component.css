@@ -1,0 +1,201 @@
+
+/* Reset y configuraciones generales */
+* {
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+}
+
+/* Barra de navegación */
+
+/* Clases activas */
+.active {
+  left: 0;
+}
+.hamburger-active {
+  transform: rotate(45deg);
+}
+.hamburger-active .line:nth-child(2) {
+  width: 0;
+}
+.hamburger-active .line:nth-child(1) {
+  transform: translateY(10px);
+}
+.hamburger-active .line:nth-child(3) {
+  transform: translateY(-5px) rotate(90deg);
+}
+
+/* Media Query */
+@media screen and (max-width: 790px) {
+  .hamburger {
+    display: block;
+  }
+  nav ul {
+    display: none;
+  }
+}
+
+/* Sección de marcas */
+
+h3 {
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+.brand-logos {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  margin-top: 30px;
+  padding: 20px;
+  background-color: white;
+}
+.brand-logos img {
+  height: 50px;
+  filter: grayscale(100%);
+  transition: filter 0.3s;
+}
+.brand-logos img:hover {
+  filter: grayscale(0%);
+}
+
+.categories {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.category-item {
+    text-align: center;
+}
+
+.category-item img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+
+}
+
+.category-item p {
+    margin-top: 8px;
+    font-size: 16px;
+    font-weight: bold;
+}
+.category-item img:hover {
+    transform: scale(1.1);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.category-item:hover img {
+    transform: scale(1.1);
+}
+
+.gaming-devices {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 40px;
+    padding: 20px;
+}
+
+.device {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 280px;
+    text-align: center;
+}
+
+.device img {
+    width: 100%;
+    max-width: 250px;
+    height: auto;
+    border-radius: 12px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.device p {
+    font-weight: bold;
+    margin-top: 12px;
+    font-size: 16px;
+    min-height: 50px; /* Mantiene el espacio si el texto es corto */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.device img:hover {
+    transform: scale(1.08);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
+}
+/* Responsive para pantallas pequeñas (móviles) */
+@media screen and (max-width: 576px) {
+  .brand-logos {
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 10px;
+  }
+
+  .brand-logos img {
+    height: 40px;
+  }
+
+  .categories {
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+  }
+
+  .category-item img {
+    width: 120px;
+    height: 120px;
+  }
+
+  .gaming-devices {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 10px;
+  }
+
+  .device {
+    max-width: 90%;
+  }
+
+  h3 {
+    font-size: 20px;
+    margin: 20px 10px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .brand-logos img {
+    height: 30px;
+  }
+
+  .category-item img {
+    width: 100px;
+    height: 100px;
+  }
+
+  .device img {
+    max-width: 200px;
+  }
+
+  .device p {
+    font-size: 14px;
+  }
+}

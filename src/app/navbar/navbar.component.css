@@ -1,0 +1,146 @@
+
+/* Reset y configuraciones generales */
+* {
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: "Poppins", sans-serif;
+  }
+  
+  /* Barra de navegación */
+  nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 5%;
+    background: rgba(10, 67, 221, 1); /* Azul sólido */
+    box-shadow: 0px 4px 10px rgba(10, 67, 221, 0.5), /* Sombra azul suave */
+                0px 2px 5px rgba(0, 0, 0, 0.3); /* Sombra negra secundaria */
+    z-index: 1;
+    height: 100px;
+  }
+  
+  /* Logo */
+  nav .logo {
+    display: flex;
+    align-items: center;
+  }
+  nav .logo img {
+    max-height: 110px; /* Ajusta según el tamaño que prefieras */
+    width: auto;
+  }
+  
+  /* Menúde navegación */
+  nav ul {
+    list-style: none;
+    display: flex;
+    align-items: center;
+  }
+  nav ul li {
+    margin: 0 1.5rem;
+  }
+  nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: 1rem;
+    font-weight: 500;
+    padding: 6px 12px;
+    border-radius: 5px;
+    transition: color 0.3s ease-in-out;
+  
+  }
+  nav ul li a:hover {
+    color: #8b2bda;
+  }
+  
+  /* Icono Hamburguesa */
+  .hamburger {
+    display: none;
+    cursor: pointer;
+  }
+  .hamburger .line {
+    width: 30px;
+    height: 3px;
+    background-color: white;
+    display: block;
+    margin: 6px auto;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  /* Menú desplegable */
+  .menubar {
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 70%;
+    height: 100vh;
+    background: rgba(10, 67, 221, 1); /* Azul sólido */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.5s ease-in;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    z-index: 2;
+  }
+  .menubar ul {
+    list-style: none;
+    padding: 0;
+    text-align: center;
+  }
+  .menubar ul li {
+    margin: 20px 0;
+  }
+  .menubar ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: 1.1rem;
+    font-weight: 500;
+    padding: 10px 15px;
+    border-radius: 5px;
+    transition: background 0.3s ease-in-out;
+  }
+
+  .menubar img{
+    height: 150px;
+  }
+  .menubar ul li a:hover {
+    background-color: #1700e6;
+  }
+  
+  /* Clases activas */
+  .active {
+    left: 0;
+  }
+  .hamburger-active {
+    transform: rotate(45deg);
+  }
+  .hamburger-active .line:nth-child(2) {
+    width: 0;
+  }
+  .hamburger-active .line:nth-child(1) {
+    transform: translateY(10px);
+  }
+  .hamburger-active .line:nth-child(3) {
+    transform: translateY(-5px) rotate(90deg);
+  }
+  .btn .btn-link.disabled {
+    pointer-events: none;
+    opacity: 0.5;
+    cursor: default;
+}
+  /* Media Query */
+  @media screen and (max-width: 790px) {
+    .hamburger {
+      display: block;
+    }
+    nav ul {
+      display: none;
+    }
+  }
+  

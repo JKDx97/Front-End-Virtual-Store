@@ -1,0 +1,34 @@
+<div class="carrito-container">
+    <div class="productos-lista">
+        <div *ngFor="let item of carrito" class="card">
+            <div class="card-info">
+                <img [src]="getProductImage(item)" alt="Imagen del producto">
+                <div class="info">
+                    <h5 class="card-title">{{item.id}}{{ item.nombre ? item.nombre : item.modelo }}</h5>
+                    <p>{{ item.marca }}</p>
+                    <p class="precio"><strong>S/ {{ item.precio }}</strong></p>
+                    <p class="subtotal">
+                        <strong>Subtotal: S/ {{ item.precio * item.cantidad | number:'1.2-2' }}</strong>
+                    </p>
+                </div>
+                <div class="acciones">
+                    <button (click)="disminuirCantidad(item)">-</button>
+                    <span class="cantidad">{{ item.cantidad }}</span>
+                    <button (click)="aumentarCantidad(item)">+</button>
+                    <div class="stock">Stock: {{ item.stock }}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="resumen-orden">
+        <h3>Resumen de la orden</h3>
+
+        <div class="card">
+            <p>Productos ({{ getTotalUnidades() }})</p>
+            <p>Total a pagar: <span>S/ {{ getTotalGeneral() | number: '1.2-2' }}</span></p>
+            <button class="continuar-btn" (click)="continuarCompra()">Continuar compra</button>
+            <button class="vaciar-btn" (click)="vaciarCarrito()">Vaciar carrito</button>
+        </div>
+    </div>
+</div>

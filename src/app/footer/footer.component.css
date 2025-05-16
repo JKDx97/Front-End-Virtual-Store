@@ -1,0 +1,87 @@
+/* Aseguramos que el body ocupe toda la altura de la pantalla */
+html, body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+/* El contenido principal debe ocupar el espacio disponible */
+main {
+    flex: 1;
+}
+
+/* Estilo del footer */
+footer {
+    background: #54149e;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+    width: 100%;
+}
+
+.footer-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 40px;
+    padding: 20px;
+}
+
+.footer-section {
+    max-width: 250px;
+}
+
+.footer-section h3 {
+    font-size: 18px;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    border-bottom: 2px solid #f90;
+    display: inline-block;
+    padding-bottom: 5px;
+}
+
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-section ul li {
+    margin: 8px 0;
+}
+
+.footer-section ul li a {
+    text-decoration: none;
+    color: #ccc;
+    transition: 0.3s;
+}
+
+.footer-section ul li a:hover {
+    color: #f90;
+}
+
+.social-icons a img {
+    width: 30px;
+    margin: 5px;
+    transition: transform 0.3s;
+}
+
+.social-icons a:hover img {
+    transform: scale(1.2);
+}
+
+.payment-methods img {
+    width: 50px;
+    margin: 5px;
+    transition: transform 0.3s;
+}
+
+.payment-methods img:hover {
+    transform: scale(1.1);
+}
+
+.footer-bottom {
+    background: #222;
+    padding: 10px 0;
+    margin-top: 20px;
+}

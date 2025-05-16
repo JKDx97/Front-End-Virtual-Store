@@ -1,0 +1,36 @@
+<h2 class="titulo">Confirmar datos del usuario</h2>
+<ul class="lista-datos">
+  <li><strong>Nombre:</strong> {{ usuario?.nombre }}</li>
+  <li><strong>Apellido:</strong> {{ usuario?.apellido }}</li>
+  <li><strong>Departamento:</strong> {{ usuario?.departamento }}</li>
+  <li><strong>Región:</strong> {{ usuario?.region }}</li>
+  <li><strong>Distrito:</strong> {{ usuario?.distrito }}</li>
+  <li><strong>Dirección:</strong> {{ usuario?.direccion }}</li>
+  <li><strong>DNI:</strong> {{ usuario?.dni }}</li>
+  <li><strong>Correo:</strong> {{ usuario?.correo }}</li>
+  <li><strong>Teléfono:</strong> {{ usuario?.telefono }}</li>
+</ul>
+
+<h3 class="subtitulo">Resumen del carrito</h3>
+<ul class="lista-carrito">
+  <li *ngFor="let item of carrito">
+    <img [src]="getProductImage(item)" alt="Imagen del producto">
+    <strong>{{item.id}} {{ item.nombre ? item.nombre : item.modelo }} - <strong>Cantidad:</strong> {{ item.cantidad }} - <strong>Precio:</strong> {{ item.precio }}</strong>
+  </li>
+</ul>
+
+
+<h3 class="subtitulo">Detalles del pago</h3>
+<form (submit)="pagar(); $event.preventDefault()" class="form-pago">
+  <div #cardElement class="card-element"></div>
+  <div id="card-errors" role="alert" class="card-errors"></div>
+  <h5>Total: S/{{ total | number: '1.2-2' }}</h5> <!-- Mostramos el total con 2 decimales -->
+  
+  <!-- Spinner de carga -->
+  <div *ngIf="isLoading" class="spinner-container">
+    <div class="spinner"></div>
+    <p> Procesando pago...</p>
+  </div>
+
+  <button type="submit" class="btn-pagar">Pagar</button>
+</form>

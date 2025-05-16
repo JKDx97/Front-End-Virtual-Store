@@ -1,0 +1,264 @@
+.full-width-carousel {
+    width: 100%; /* Ocupa todo el ancho */
+    max-height: 300px; /* Ajusta la altura del carrusel */
+    overflow: hidden; /* Evita que el contenido desborde */
+}
+
+.full-width-carousel .carousel-inner {
+    max-height: 300px; /* Mantiene la altura interna */
+}
+
+.full-width-carousel img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ajusta la imagen sin deformarla */
+}
+h3 {
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+.brand-logos {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    margin-top: 30px;
+    padding: 20px;
+    background-color: white;
+  }
+  .brand-logos img {
+    height: 50px;
+    filter: grayscale(100%);
+    transition: filter 0.3s;
+  }
+  .brand-logos img:hover {
+    filter: grayscale(0%);
+  }
+  .sidebar {
+    left: 0;
+    top: 60px; /* Ajustar según el navbar */
+    width: 250px;
+    height: 100%;
+    background-color: white;
+    padding: 20px;
+    overflow-y: auto;
+    box-shadow: none; /* Eliminamos los bordes */
+}
+
+.sidebar h4 {
+    font-size: 18px;
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+.sidebar h6 {
+    font-size: 16px;
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+.sidebar ul {
+    padding: 0;
+    list-style: none;
+}
+
+.sidebar ul li {
+    margin-bottom: 8px;
+}
+
+.sidebar ul li input {
+    margin-right: 8px;
+}
+
+/* Inputs de filtro */
+.sidebar input[type="number"] {
+    width: 100%;
+    padding: 5px;
+    margin-top: 5px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+/* Estilo para los selects */
+.sidebar select {
+    width: 100%;
+    padding: 5px;
+    margin-top: 5px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+.container-fluid {
+    margin-left: 250px;
+}
+.content-section {
+    padding: 20px;
+}
+.productos-container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+}
+
+.titulo {
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+/* Tarjeta con altura uniforme */
+.producto-card {
+    min-width: 250px;
+    height: 480px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    border: none;
+    border-radius: 10px;
+    overflow: hidden;
+    
+}
+
+.producto-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Imágenes alineadas */
+.imagen-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    border-bottom: 1px solid #ddd;
+    height: 200px; /* Fija la altura */
+}
+
+.producto-img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+/* Contenido alineado */
+.card-body {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+
+.card-title {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.detalles {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+.vendedor {
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+
+.logo-vendedor {
+    width: 20px;
+    height: auto;
+}
+
+.precio {
+    font-size: 18px;
+    color: #474747;
+    font-weight: bold;
+}
+
+.buttons{
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.btn-ver-mas {
+    margin-top: auto;
+    border-radius: 5px;
+    font-weight: bold;
+}
+/* --- AJUSTES RESPONSIVE --- */
+
+/* Carrusel responsive */
+@media (max-width: 768px) {
+    .full-width-carousel,
+    .full-width-carousel .carousel-inner {
+        max-height: 200px;
+    }
+
+    .brand-logos {
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+
+    .sidebar {
+        position: relative;
+        width: 100%;
+        height: auto;
+        box-shadow: none;
+        margin-bottom: 20px;
+    }
+
+    .container-fluid {
+        margin-left: 0;
+    }
+
+    .d-flex {
+        flex-direction: column;
+    }
+
+    .productos-container .row {
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .producto-card {
+        height: auto;
+    }
+}
+
+/* Muy móviles (teléfonos chicos) */
+@media (max-width: 576px) {
+    .brand-logos img {
+        height: 40px;
+    }
+
+    .producto-card .card-body {
+        padding: 10px;
+    }
+
+    .producto-card .card-title {
+        font-size: 16px;
+    }
+
+    .producto-card .detalles,
+    .producto-card .vendedor,
+    .producto-card .precio {
+        font-size: 14px;
+    }
+
+    .buttons .btn {
+        width: 100%;
+        margin-bottom: 5px;
+    }
+
+    .buttons {
+        display: flex;
+        flex-direction: column;
+    }
+}

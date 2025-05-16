@@ -1,0 +1,111 @@
+<div id="carouselExampleIndicators" class="carousel slide custom-carousel">
+    <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
+            aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+            aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+            aria-label="Slide 3"></button>
+    </div>
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img src="https://4kwallpapers.com/images/wallpapers/playstation-5-pro-1920x1080-19032.jpg"
+                class="d-block img-fluid" alt="...">
+        </div>
+        <div class="carousel-item">
+            <img src="https://preview.redd.it/k5dq0fog85iz.png?auto=webp&s=b1ff04d4bf1c10dc6beaf95e7fcbb98d27f17faa"
+                class="d-block img-fluid" alt="...">
+        </div>
+        <div class="carousel-item">
+            <img src="https://xxboxnews.blob.core.windows.net/prod/sites/2/2024/11/New-Xbox-Series-X_S-Console-Options-Family_NoText-65586e62c31bf0eee51f.jpg"
+                class="d-block img-fluid" alt="...">
+        </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+        data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+        data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>
+
+<div class="brand-logos">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/Sony_logo.svg/1200px-Sony_logo.svg.png"
+        alt="Razer">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/d/d7/Xbox_logo_%282019%29.svg" alt="Logitech">
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQVxU5ADPiW2GXkveNB4Q9J8uJrDUeCk_BJug&s"
+        alt="Theros">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/Valve_logo.svg/320px-Valve_logo.svg.png"
+        alt="SteelSeries">
+</div>
+
+<div class="d-flex">
+    <!-- Sidebar -->
+    <div class="col-md-3 sidebar">
+        <h4>Filtros</h4>
+
+        <!-- Filtro por marca -->
+        <h6>Marcas</h6>
+        <ul class="list-unstyled">
+            <li *ngFor="let brand of ['Sony', 'Nintendo', 'Microsoft', 'Valve']">
+                <input type="checkbox" [id]="brand" [value]="brand" (change)="onBrandFilterChange($event)">
+                <label [for]="brand">{{ brand }}</label>
+            </li>
+        </ul>
+
+        <!-- Filtro por precio -->
+        <h6>Rango de precio</h6>
+        <label for="min-price">Mínimo:</label>
+        <input type="number" id="min-price" class="form-control" placeholder="S/ 1000" (input)="onPriceFilterChange()"
+            [(ngModel)]="minPrice">
+
+        <label for="max-price">Máximo:</label>
+        <input type="number" id="max-price" class="form-control" placeholder="S/ 5000" (input)="onPriceFilterChange()"
+            [(ngModel)]="maxPrice">
+
+        <!-- Ordenar por precio y nombre -->
+        <h6>Ordenar por</h6>
+        <select class="form-select" [(ngModel)]="sortOrder" (change)="applyFilters()">
+            <option value="asc">Precio: Menor a mayor</option>
+            <option value="desc">Precio: Mayor a menor</option>
+            <option value="az">Marca: A - Z</option>
+            <option value="za">Marca: Z - A</option>
+        </select>
+    </div>
+
+    <div class="productos-container">
+        <h3 class="titulo">Productos Destacados</h3>
+        <div class="row">
+            <div class="col-lg-4 col-md-6 col-sm-12 mb-4" *ngFor="let consola of filteredConsolas">
+                <div class="card producto-card">
+                    <div class="imagen-container" *ngFor="let img of consola.images">
+                        <img *ngIf="consola.images?.length > 0 && consola.images[0]?.consola_image_principal"
+                            [src]="consola.images[0]?.consola_image_principal" alt="Imagen de {{ consola.nombre }}"
+                            class="producto-img">
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">{{ consola.marca }} - {{ consola.nombre }}</h5>
+                        <p class="detalles">
+                            Modelo: {{ consola.modelo }} | Color: {{ consola.color }}
+                        </p>
+                        <p class="vendedor">
+                            Por GamerVault
+                            <img src="https://media-hosting.imagekit.io//f88530b6fcea44d8/xd-removebg-preview.png?Expires=1837459128&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=S-P7LIljHGDR-5SjrgM7EB~QPTVHOb2BXwnrTCNSpGzI275SX7I8at13sNsIzZdDyNCpFDmN7fuzXOnxkXFs~BRLz6WiXt71-RuUD9SiRVJJ91q5F7s0TvU55tJ6fZckRFUAwvgdJZ2yb-3JL~AFnsq7d535fmCZRnLsMTtJcNaV8yiOuhRWo4VWGmwgQ~AL1sp7ixdBRwdwxqmss2QCpJ9CtAuPKstRGtWD1PTCnTpTRbP5QnUzhmgUrB3w-lU9jG7FhDfWFCE14rVKl-9e8Jfm4CM2z25qn0uFjnyFRYneCxL94NUPbjiE8PDgaJhCJkefLPSGW5SuH78WNd1EBA__"
+                                alt="Logo" class="logo-vendedor">
+                        </p>
+                        <p class="precio"><strong>S/ {{ consola.precio }}</strong></p>
+                        <div class="buttons">
+                            <a href="#" class="btn btn-primary btn-ver-mas">Ver más</a>
+                            <button class="btn btn-success" (click)="addConsolaCarrito(consola)">Agregar al
+                                carrito</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

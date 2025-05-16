@@ -1,0 +1,42 @@
+<nav>
+    <div class="logo">
+        <img src="https://media-hosting.imagekit.io//407cb57bed3a4af4/logo.png?Expires=1837449601&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=Vk24dyCJoDZI2Ooo9dtynn0xf-Uyw~SoGS00CAcaJwRncDab4-X62Sql8yGh4ze6szCw94m0SI070SvfjATR1iBgyhGxbPLX16wa866PPAPgyi2e5UXFdWxooffXUv9u4us1kZq0EfI-TF3shU6AMg5oRNuSrja0RzgXi5kVjdPMOCNbMY5cyg8kH0tQnZsKCZuaBXtK6xg4Gn8WIeIbgH2PAp7MTDAVqUlT4SdL7XlVt0FSYx7FRPOXyturJvViLq0UCeO8C6bdYTte4~12UWIEQOBpfcxSAemGWtMUCPacDZbcvYpykiqTmFaJ03ZpbxiKApxe1olQizSg0WGZhA__"
+            alt="logo" [routerLink]="['/']" routerLinkActive="router-link-active">
+    </div>
+    <ul class="nav-links" *ngIf="!isMenuOpen">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Services</a></li>
+        <li><a href="#">Blog</a></li>
+        <li><a href="#">Contact Us</a></li>
+        <li *ngIf="cantidadProductos > 0">
+            <a [routerLink]="['/carrito']">
+                <i class="fas fa-shopping-cart"></i>
+                <span class="badge bg-primary">{{ cantidadProductos }}</span>
+            </a>
+        </li>
+    </ul>
+
+    <div class="hamburger" (click)="toggleMenu()" [class.hamburger-active]="isMenuOpen">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+    </div>
+</nav>
+<div class="menubar" [class.active]="isMenuOpen">
+    <img class="logo-menu"
+        src="https://media-hosting.imagekit.io//407cb57bed3a4af4/logo.png?Expires=1837449601&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=Vk24dyCJoDZI2Ooo9dtynn0xf-Uyw~SoGS00CAcaJwRncDab4-X62Sql8yGh4ze6szCw94m0SI070SvfjATR1iBgyhGxbPLX16wa866PPAPgyi2e5UXFdWxooffXUv9u4us1kZq0EfI-TF3shU6AMg5oRNuSrja0RzgXi5kVjdPMOCNbMY5cyg8kH0tQnZsKCZuaBXtK6xg4Gn8WIeIbgH2PAp7MTDAVqUlT4SdL7XlVt0FSYx7FRPOXyturJvViLq0UCeO8C6bdYTte4~12UWIEQOBpfcxSAemGWtMUCPacDZbcvYpykiqTmFaJ03ZpbxiKApxe1olQizSg0WGZhA__"
+        alt="logo">
+
+    <ul>
+        <li><a href="#" (click)="closeMenu()">Home</a></li>
+        <li><a href="#" (click)="closeMenu()">Services</a></li>
+        <li><a href="#" (click)="closeMenu()">Blog</a></li>
+        <li><a href="#" (click)="closeMenu()">Contact Us</a></li>
+        <li *ngIf="cantidadProductos > 0">
+            <a [routerLink]="['/carrito']">
+                <i class="fas fa-shopping-cart"></i>
+                <span class="badge bg-primary">{{ cantidadProductos }}</span>
+            </a>
+        </li>
+    </ul>
+</div>
