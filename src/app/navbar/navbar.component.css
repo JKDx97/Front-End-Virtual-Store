@@ -31,7 +31,7 @@
     align-items: center;
   }
   nav .logo img {
-    max-height: 110px; /* Ajusta según el tamaño que prefieras */
+    max-height: 80px; /* Ajusta según el tamaño que prefieras */
     width: auto;
   }
   
@@ -107,7 +107,7 @@
   }
 
   .menubar img{
-    height: 150px;
+    height: 80px;
   }
   .menubar ul li a:hover {
     background-color: #1700e6;

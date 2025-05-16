@@ -88,9 +88,15 @@
             <div class="col-lg-4 col-md-6 col-sm-12 mb-4" *ngFor="let laptop of filteredLaptops">
                 <div class="card producto-card">
                     <div class="imagen-container">
-                        <img *ngIf="laptop.images?.length > 0 && laptop.images[0]?.laptop_image_principal"
-                            [src]="laptop.images[0]?.laptop_image_principal" alt="Imagen de {{ laptop.nombre }}"
+                        <!-- Si tiene imagen -->
+                        <img *ngIf="laptop.images?.length > 0 && laptop.images[0]?.laptop_image_principal; else sinImagen"
+                            [src]="laptop.images[0].laptop_image_principal" alt="Imagen de {{ laptop.nombre }}"
                             class="producto-img">
+
+                        <!-- Imagen por defecto si no hay imagen -->
+                        <ng-template #sinImagen>
+                            <img src="images/placeholder.png" alt="Imagen no disponible" class="producto-img">
+                        </ng-template>
                     </div>
                     <div class="card-body">
                         <h5 class="card-title">{{ laptop.marca }} - {{ laptop.modelo }}</h5>
@@ -101,8 +107,7 @@
                         </p>
                         <p class="vendedor">
                             Por GamerVault
-                            <img src="https://media-hosting.imagekit.io//f88530b6fcea44d8/xd-removebg-preview.png?Expires=1837459128&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=S-P7LIljHGDR-5SjrgM7EB~QPTVHOb2BXwnrTCNSpGzI275SX7I8at13sNsIzZdDyNCpFDmN7fuzXOnxkXFs~BRLz6WiXt71-RuUD9SiRVJJ91q5F7s0TvU55tJ6fZckRFUAwvgdJZ2yb-3JL~AFnsq7d535fmCZRnLsMTtJcNaV8yiOuhRWo4VWGmwgQ~AL1sp7ixdBRwdwxqmss2QCpJ9CtAuPKstRGtWD1PTCnTpTRbP5QnUzhmgUrB3w-lU9jG7FhDfWFCE14rVKl-9e8Jfm4CM2z25qn0uFjnyFRYneCxL94NUPbjiE8PDgaJhCJkefLPSGW5SuH78WNd1EBA__"
-                                alt="Logo" class="logo-vendedor">
+                            <img src="images/logotipo.png" alt="Logo" class="logo-vendedor">
                         </p>
                         <p class="precio"><strong>S/ {{ laptop.precio }}</strong></p>
                         <div class="buttons">
